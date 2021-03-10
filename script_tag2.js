@@ -3,7 +3,7 @@
 
   // make api call to get board from dynamodb
 
-  function getStatus(url,callback){
+  function getStatus(callback){
       var elem = document.getElementById("pinterest-feed-app")
   let boardID = elem.className
     var url = 'https://elevate-test-store.myshopify.com/apps/pin_app/board';
@@ -26,7 +26,7 @@
    }
 };
   
-  getStatus(url,function(statuses){
+  getStatus(function(statuses){
     console.log("the stat", statuses);
 });
 })();
