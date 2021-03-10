@@ -21,6 +21,56 @@
             console.log('Inside function getStatus'+statuses, response);
 
     elem.outerHTML=response; ///it's simple replacement of whole element with contents of str var
+          
+
+function resizeMasonryItem(item){
+  var grid = document.getElementsByClassName('masonry')[0];
+  if( grid ) {
+    var rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap')),
+        rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows')),
+        gridImagesAsContent = item.querySelector('img.masonry-content');
+
+    var rowSpan = Math.ceil((item.querySelector('.masonry-content').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
+    var pSpan = Math.ceil((item.querySelector('.masonry-item-title').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
+    
+
+    item.style.gridRowEnd = 'span '+(rowSpan + pSpan);
+    if(gridImagesAsContent) {
+
+    }
+  }
+}
+
+
+function resizeAllMasonryItems(){
+  var allItems = document.querySelectorAll('.masonry-item');
+
+  if( allItems ) {
+    for(var i=0;i>allItems.length;i++){
+      resizeMasonryItem(allItems[i]);
+    }
+  }
+}
+
+function waitForImages() {
+  var allItems = document.querySelectorAll('.masonry-item');
+  if( allItems ) {
+    for(var i=0;i<allItems.length;i++){
+      imagesLoaded( allItems[i], function(instance) {
+        var item = instance.elements[0];
+        resizeMasonryItem(item);
+        console.log("Waiting for Images");
+      } );
+    }
+  }
+}
+
+var masonryEvents = ['load', 'resize'];
+masonryEvents.forEach( function(event) {
+  window.addEventListener(event, resizeAllMasonryItems);
+} );
+
+waitForImages();
             if(callback) callback(statuses);
       };
    }
