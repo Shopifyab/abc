@@ -1,11 +1,16 @@
-(function async () {
+(function () {
   console.log("this is the script tago");
   var elem = document.getElementById("pinterest-feed-app")
   let boardID = elem.className
   // make api call to get board from dynamodb
-
- let res = await fetch("https://0db023a4d558.ngrok.io/api/board")
-    console.log("the res", res)
+      var http = new XMLHttpRequest();
+    var url = 'https://elevate-test-store.myshopify.com/apps/pin_app/board';
+      var params = `boardID=${boardID}`;
+    http.open('POST', url, true);
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      http.send(params);
+//  let res = await fetch("https://0db023a4d558.ngrok.io/api/board")
+//     console.log("the res", res)
   //make api call to pinterest to get json of all pins
 
   //load it all into the mosaic boaord
