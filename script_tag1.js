@@ -3,13 +3,30 @@
   var elem = document.getElementById("pinterest-feed-app")
   let boardID = elem.className
   // make api call to get board from dynamodb
-      var http = new XMLHttpRequest();
     var url = 'https://elevate-test-store.myshopify.com/apps/pin_app/board';
-      var params = `boardID=${boardID}`;
-    http.open('POST', url, true);
-    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-     let result = http.send(params);
-     console.log("the result", result)
+
+  function getStatus(url,callback){
+    var xhr = new XMLHttpRequest;
+    var url = 'https://elevate-test-store.myshopify.com/apps/pin_app/board';
+    var params = `boardID=${boardID}`;
+    xhr.open('POST', url, true);
+    xhr.send(params);
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            var regexStatus = /(\w+ state:.*?)</g
+            var response = xhr.responseText;
+            var statuses = response.match(regexStatus);
+            console.log('Inside function getStatus'+statuses);
+            if(callback) callback(statuses);
+      };
+   }
+};
+  
+  getStatus(url,function(statuses){
+    console.log("the stat", statuses);
+});
+  
 //  let res = await fetch("https://0db023a4d558.ngrok.io/api/board")
 //     console.log("the res", res)
   //make api call to pinterest to get json of all pins
