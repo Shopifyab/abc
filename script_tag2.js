@@ -29,9 +29,4 @@
   getStatus(url,function(statuses){
     console.log("the stat", statuses);
 });
-  
-
-
-  elem.style.height = "200px";
-  elem.style.background = "red";
 })();
