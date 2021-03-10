@@ -9,7 +9,7 @@
         for(let i = 0; i < elem.length; i++){
     let boardID = elem[i].pinid
       var url = window.location.hostname + "/apps/pin_app/board";
-      var checkEnableUrl = window.location.hostname + "/apps/pin_app/boardenabled"
+      var checkEnableUrl = window.location.hostname + "/apps/pin_app/checkenabled"
       var checkEnable = new XMLHttpRequest;
           var xhr = new XMLHttpRequest;
       var params = `boardID=${boardID}`;
