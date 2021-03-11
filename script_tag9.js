@@ -24,6 +24,19 @@
                 console.log("its enabled")
                   const div = document.createElement("div");
   div.className = "loader";
+                div.innerHTML = `<style>    .loader {
+      border: 16px solid #f3f3f3;
+      border-top: 16px solid #cccccc;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }</style>`;
   document.getElementById(boardID).appendChild(div);
       xhr.open('POST', url, true);
       xhr.send(JSON.stringify(params));
