@@ -22,6 +22,9 @@
             let resObj = JSON.parse(res)
             if(resObj.enabled === true){
                 console.log("its enabled")
+                  const div = document.createElement("div");
+  div.className = "loader";
+  document.getElementById(boardID).appendChild(div);
       xhr.open('POST', url, true);
       xhr.send(JSON.stringify(params));
       xhr.onreadystatechange = function() {
