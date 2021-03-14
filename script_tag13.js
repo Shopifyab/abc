@@ -54,10 +54,11 @@ function checkVisible(elm) {
   var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
   return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
 }
-document.addEventListener('scroll', function(e) {
+document.addEventListener('scroll', function pinSeen(e) {
   if(checkVisible(pinBoardElem)){
     console.log("its visuable yippy")
   }
+    document.removeEventListener('scroll', pinSeen);
 });
   
   function resizeMasonryItem(item){
