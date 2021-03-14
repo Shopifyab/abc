@@ -57,8 +57,8 @@ function checkVisible(elm) {
 var isPinSeen = () => {
 if(checkVisible(pinBoardElem)){
     console.log("its visuable yippy")
+    document.removeEventListener('scroll', isPinSeen);
   }
-document.removeEventListener('scroll', isPinSeen);
 }
 document.addEventListener('scroll', isPinSeen);
   
