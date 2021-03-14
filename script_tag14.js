@@ -54,12 +54,13 @@ function checkVisible(elm) {
   var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
   return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
 }
-document.addEventListener('scroll', function pinSeen(e) {
-  if(checkVisible(pinBoardElem)){
+var isPinSeen = () => {
+if(checkVisible(pinBoardElem)){
     console.log("its visuable yippy")
   }
-    document.removeEventListener('scroll', pinSeen);
-});
+document.removeEventListener('scroll', isPinSeen);
+}
+document.addEventListener('scroll', isPinSeen);
   
   function resizeMasonryItem(item){
     var grid = document.getElementsByClassName('masonry')[0];
