@@ -103,15 +103,13 @@ document.addEventListener('scroll', isPinSeen);
       var clickParams = `productID=${productID}&shop=${shopName}&postID=${pinID}&boardID=${pinBoardID}`;
       click.open('POST', clickUrl, true)
       click.send(clickParams)
-                         let addAttributes = () => {
         var http = new XMLHttpRequest();
-        var url = '/cart/update.js';
+        var url = "https://" + window.location.hostname + '/cart/update.js';
   var params = `products=${productID}`;
         http.open('POST', url, true);
         http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
           http.send(params);
-          };
-          addAttributes();
+            console.log(http, "the http")
 //                  jQuery.post('/cart/update.js', { attributes: {products: productID}});
 
             })
