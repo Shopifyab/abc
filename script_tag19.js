@@ -8,6 +8,7 @@
         if(elem.length > 0){
         for(let i = 0; i < elem.length; i++){
     let boardID = elem[i].id
+    let shopName = elem[i].getAttribute('data-shop')
       var url = "https://" + window.location.hostname + "/apps/pin_app/board";
       var checkEnableUrl = "https://" + window.location.hostname + "/apps/pin_app/checkenabled"
       var checkEnable = new XMLHttpRequest;
@@ -86,7 +87,7 @@ document.addEventListener('scroll', isPinSeen);
       document.getElementById('pfeed-Product_list').appendChild(loadElem);
       var prodsUrl = 'https://' + window.location.hostname + '/apps/pin_app/boardproducts'
       var prods = new XMLHttpRequest;
-      var params = `products=${pinProducts}&shop=${"shopname"}&postID=${pinID}`;
+      var params = `products=${pinProducts}&shop=${shopName}&postID=${pinID}`;
       prods.open('POST', prodsUrl, true)
       prods.send(params)
       prods.onreadystatechange = function() {
