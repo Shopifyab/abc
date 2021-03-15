@@ -57,6 +57,12 @@ function checkVisible(elm) {
 var isPinSeen = () => {
 if(checkVisible(pinBoardElem)){
     console.log("its visuable yippy")
+    var addViewUrl = "https://" + window.location.hostname + "/apps/pin_app/addview"
+    var addView = new XMLHttpRequest;
+      var params = `boardID=${boardID}`;
+    addView.open('POST', addViewUrl, true)
+    addView.send(params)
+    
     document.removeEventListener('scroll', isPinSeen);
   }
 }
