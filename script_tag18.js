@@ -71,7 +71,7 @@ document.addEventListener('scroll', isPinSeen);
             let pinElements = document.getElementsByClassName("masonry-item")
             
             for(let i = 0; i < pinElements.length; i++){
-            pinElements[i].onclick = function() {
+            pinElements[i].addEventListener("click", function() {
             let pinLrgImage = pinElements[i].getAttribute('data-image')
             let pinDesc = pinElements[i].getAttribute('data-desc')
             let pinProducts = pinElements[i].getAttribute('data-products')
@@ -96,9 +96,8 @@ document.addEventListener('scroll', isPinSeen);
             console.log('the res', prods)
         }
       };  
+            })
             }
-            }
-              
   
   function resizeMasonryItem(item){
     var grid = document.getElementsByClassName('masonry')[0];
