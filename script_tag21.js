@@ -95,7 +95,7 @@ document.addEventListener('scroll', isPinSeen);
             var res = prods.response
             document.getElementById('pfeed-Product_list').innerHTML = res
             let productElements = document.getElementsByClassName('pfeed-product-card')
-            for(let j; j < productElements.length;j++){
+            for(let j = 0; j < productElements.length;j++){
             productElements[j].addEventListener("click", function() {
                 let productID = productElements[j].getAttribute('data-productid')
                       var clickUrl = 'https://' + window.location.hostname + '/apps/pin_app/addproductclick'
