@@ -87,7 +87,7 @@ document.addEventListener('scroll', isPinSeen);
       document.getElementById('pfeed-Product_list').appendChild(loadElem);
       var prodsUrl = 'https://' + window.location.hostname + '/apps/pin_app/boardproducts'
       var prods = new XMLHttpRequest;
-      var params = `products=${pinProducts}&shop=${shopName}&postID=${pinID}`;
+      var params = `products=${pinProducts}&shop=${shopName}&postID=${pinID}&boardID=${pinBoardID}`;
       prods.open('POST', prodsUrl, true)
       prods.send(params)
       prods.onreadystatechange = function() {
