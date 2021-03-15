@@ -105,7 +105,7 @@ document.addEventListener('scroll', isPinSeen);
       click.send(clickParams)
         var http = new XMLHttpRequest();
         var url = "https://" + window.location.hostname + '/cart/update.js';
-  var params = `attributes[pinterest-feed]=${pinID},${pinBoardID}`;
+  var params = `attributes[pinterest-feed ${productID}]=${pinID},${pinBoardID}`;
         http.open('POST', url, true);
         http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
           http.send(params);
