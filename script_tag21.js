@@ -94,6 +94,17 @@ document.addEventListener('scroll', isPinSeen);
         if (this.readyState == 4 && this.status == 200) {
             var res = prods.response
             document.getElementById('pfeed-Product_list').innerHTML = res
+            let productElements = document.getElementsByClassName('pfeed-product-card')
+            for(let j; j < productElements.length;j++){
+            productElements[j].addEventListener("click", function() {
+                let productID = productElements[j].getAttribute('data-productid')
+                      var clickUrl = 'https://' + window.location.hostname + '/apps/pin_app/addproductclick'
+      var click = new XMLHttpRequest;
+      var clickParams = `productID=${productID}&shop=${shopName}&postID=${pinID}&boardID=${pinBoardID}`;
+      click.open('POST', clickUrl, true)
+      click.send(clickParams)
+            })
+            }
             console.log('the res', prods)
         }
       };  
