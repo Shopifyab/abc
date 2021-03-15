@@ -67,6 +67,38 @@ if(checkVisible(pinBoardElem)){
   }
 }
 document.addEventListener('scroll', isPinSeen);
+// adding onclick event to each pin
+            let pinElements = document.getElementsByClassName("masonry-item")
+            
+            for(let i = 0; i < pinElements.length; i++){
+            pinElements[i].onclick = function() {
+            let pinLrgImage = pinElements[i].getAttribute('data-image')
+            let pinDesc = pinElements[i].getAttribute('data-desc')
+            let pinProducts = pinElements[i].getAttribute('data-products')
+            let pinBoardID = pinElements[i].getAttribute('data-boardid')
+            let pinID = pinElements[i].id
+            document.getElementById('pfeed-popUp').style.display = 'flex'; 
+      document.getElementById('pfeed-modalimg').src = pinLrgImage;
+      document.getElementById('pfeed-modal-description').innerHTML = pinDesc || "";
+      var loadElem = document.createElement('div');
+      loadElem.className = 'loader';
+      document.getElementById('pfeed-Product_list').innerHTML = '';
+      document.getElementById('pfeed-Product_list').appendChild(loadElem);
+      var prodsUrl = 'https://' + window.location.hostname + '/apps/pin_app/boardproducts'
+      var prods = new XMLHttpRequest;
+      var params = `products=${pinProducts}&shop=${"shopname"}&postID=${pinID}`;
+      prods.open('POST', prodsUrl, true)
+      prods.send(params)
+      prods.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var res = prods.response
+            document.getElementById('pfeed-Product_list').innerHTML = res
+            console.log('the res', prods)
+        }
+      };  
+            }
+            }
+              
   
   function resizeMasonryItem(item){
     var grid = document.getElementsByClassName('masonry')[0];
