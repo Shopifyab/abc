@@ -103,6 +103,8 @@ document.addEventListener('scroll', isPinSeen);
       var clickParams = `productID=${productID}&shop=${shopName}&postID=${pinID}&boardID=${pinBoardID}`;
       click.open('POST', clickUrl, true)
       click.send(clickParams)
+                 jQuery.post('/cart/update.js', { attributes: {products: productID}});
+
             })
             }
             console.log('the res', prods)
