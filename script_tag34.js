@@ -1,6 +1,5 @@
 
 (function () {
-  console.log("this is the script tago");
 
   // make api call to get board from dynamodb
 
@@ -20,10 +19,8 @@
   checkEnable.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
           var res = checkEnable.responseText
-          console.log("the res", res)
           let resObj = JSON.parse(res)
           if(resObj.enabled === true){
-              console.log("its enabled")
                 const div = document.createElement("div");
 div.className = "loader";
               div.innerHTML = `<style>    .loader {
@@ -48,9 +45,9 @@ document.getElementById(boardID).appendChild(div);
             var response = xhr.responseText;
 
     elem[i].outerHTML=response; ///it's simple replacement of whole element with contents of str var
-              console.log("helo");
-              console.log("the body", document.body)
-              console.log("thebody2", document.getElementsByTagName('body'))
+
+            let pinBoardElem = document.getElementById('pinboard-wrapper');
+  let socialName = pinBoardElem.getAttribute('data-social')
               let modalElement = `<div id="pfeed-popUp" onClick="document.getElementById('pfeed-popUp').style.display = 'none'" >
       <div id="pfeed-modal" onClick="function(e) {e.stopPropagation()}" >
         <button onClick="document.getElementById('pfeed-popUp').style.display = 'none'" class="pfeed-modal_close">x</button>
@@ -59,7 +56,7 @@ document.getElementById(boardID).appendChild(div);
         </div>
         <div id="pfeed-Product">
           <div class="pfeed-Product_header">
-            <a id="pfeed-social">Social Name</a>
+            <a id="pfeed-social">${socialName}</a>
           </div>
           <div id="pfeed-Product_list">
             </div>
@@ -68,9 +65,7 @@ document.getElementById(boardID).appendChild(div);
           </div>
         </div>`
               let insertel = document.body.insertAdjacentHTML("afterbegin", modalElement)
-              console.log("the insert", insertel)
-  let pinBoardElem = document.getElementById('pinboard-wrapper');
-console.log(pinBoardElem, "elem")
+
 function checkVisible(elm) {
 var rect = elm.getBoundingClientRect();
 var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
@@ -78,7 +73,6 @@ return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
 }
 var isPinSeen = () => {
 if(checkVisible(pinBoardElem)){
-  console.log("its visuable yippy")
   var addViewUrl = "https://" + window.location.hostname + "/apps/pin_app/addview"
   var addView = new XMLHttpRequest;
     var params = `boardID=${boardID}`;
@@ -94,6 +88,7 @@ document.addEventListener('scroll', isPinSeen);
           
           for(let i = 0; i < pinElements.length; i++){
           pinElements[i].addEventListener("click", function() {
+          document.body.style.overflowY = "hidden"
           let pinLrgImage = pinElements[i].getAttribute('data-image')
           let pinDesc = pinElements[i].getAttribute('data-desc')
           let pinProducts = pinElements[i].getAttribute('data-products')
@@ -131,12 +126,9 @@ var params = `attributes[pinterest-feed ${productID}]=${pinID},${pinBoardID}`;
       http.open('POST', url, true);
       http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         http.send(params);
-          console.log(http, "the http")
-//                  jQuery.post('/cart/update.js', { attributes: {products: productID}});
 
           })
           }
-          console.log('the res', prods)
       }
     };  
           })
@@ -178,7 +170,6 @@ function waitForImages() {
       imagesLoaded( allItems[i], function(instance) {
         var item = instance.elements[0];
         resizeMasonryItem(item);
-        console.log("Waiting for Images");
       } );
     }
   }
