@@ -4,6 +4,15 @@
   // make api call to get board from dynamodb
 
   function getStatus(callback){
+    var userSession = sessionStorage.getItem("pfeed");
+    if(userSession === undefined || userSession === null){
+    sessionStorage.setItem("pfeed", "true");
+    var addTrafficUrl = "https://" + window.location.hostname + "/apps/pin_app/addstoretraffic"
+        var addTraffic = new XMLHttpRequest;
+  addTraffic.open('POST', addTrafficUrl, true)
+  addTraffic.send()
+    } 
+
       var elem = document.getElementsByClassName("pinterest-feed-app")
       if(elem.length > 0){
       for(let i = 0; i < elem.length; i++){
