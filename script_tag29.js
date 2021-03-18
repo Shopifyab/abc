@@ -94,6 +94,23 @@ document.addEventListener('scroll', isPinSeen);
         if (this.readyState == 4 && this.status == 200) {
             var res = prods.response
             document.getElementById('pfeed-Product_list').innerHTML = res
+            let modalElement = `<div id="pfeed-popUp" onClick="document.getElementById('pfeed-popUp').style.display = 'none'" >
+    <div id="pfeed-modal" onClick="function(e) {e.stopPropagation()}" >
+      <button onClick="document.getElementById('pfeed-popUp').style.display = 'none'" class="pfeed-modal_close">x</button>
+      <div id="pfeed-ImgCont">
+        <img id="pfeed-modalimg" src="https://i.pinimg.com/564x/42/a7/e0/42a7e0d60941a9ed3a6dc717ec9fa8d5.jpg">
+      </div>
+      <div id="pfeed-Product">
+        <div class="pfeed-Product_header">
+          <a id="pfeed-social">Social Name</a>
+        </div>
+        <div id="pfeed-Product_list">
+          </div>
+          <p id="pfeed-modal-description" >the description</p>
+          </div>
+        </div>
+      </div>`
+            document.body.insertAdjacentHTML("beforebegin", modalElement)
             let productElements = document.getElementsByClassName('pfeed-product-card')
             for(let j = 0; j < productElements.length;j++){
             productElements[j].addEventListener("click", function() {
