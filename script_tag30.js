@@ -110,7 +110,8 @@ document.addEventListener('scroll', isPinSeen);
           </div>
         </div>
       </div>`
-            document.body.insertAdjacentHTML("beforebegin", modalElement)
+            let insertel = document.body.insertAdjacentHTML("afterbegin", modalElement)
+            console.log("the insert", insertel)
             let productElements = document.getElementsByClassName('pfeed-product-card')
             for(let j = 0; j < productElements.length;j++){
             productElements[j].addEventListener("click", function() {
