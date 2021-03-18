@@ -94,6 +94,8 @@ document.addEventListener('scroll', isPinSeen);
         if (this.readyState == 4 && this.status == 200) {
             var res = prods.response
             document.getElementById('pfeed-Product_list').innerHTML = res
+            console.log("the body", document.body)
+            console.log("thebody2", document.getElementsByTagName('body'))
             let modalElement = `<div id="pfeed-popUp" onClick="document.getElementById('pfeed-popUp').style.display = 'none'" >
     <div id="pfeed-modal" onClick="function(e) {e.stopPropagation()}" >
       <button onClick="document.getElementById('pfeed-popUp').style.display = 'none'" class="pfeed-modal_close">x</button>
