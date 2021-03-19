@@ -75,15 +75,18 @@ document.getElementById(boardID).appendChild(div);
         </div>`
               let insertel = document.body.insertAdjacentHTML("afterbegin", modalElement)
 function CloseModal(e) {
-  console.log(e)
   if (e.target.id == "pfeed-popUp") {
      document.getElementById('pfeed-popUp').style.display = 'none';
      document.body.style.overflowY = "unset"
   }
 }
 var BackDrop = document.getElementById("pfeed-popUp")
+function ModalCloseButton(e) {
+     document.getElementById('pfeed-popUp').style.display = 'none';
+     document.body.style.overflowY = "unset"
+}
 var closeElement = document.getElementById("pfeed-modal-close")
-BackDrop.addEventListener("click", CloseModal, false)
+BackDrop.addEventListener("click", ModalCloseButton, false)
 closeElement.addEventListener("click", CloseModal, false)
 function checkVisible(elm) {
 var rect = elm.getBoundingClientRect();
