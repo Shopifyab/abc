@@ -78,6 +78,7 @@ function CloseModal(e) {
   console.log(e)
   if (e.target.id == "pfeed-popUp") {
      document.getElementById('pfeed-popUp').style.display = 'none';
+     document.body.style.overflowY = "unset"
   }
 }
 var BackDrop = document.getElementById("pfeed-popUp")
