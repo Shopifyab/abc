@@ -59,7 +59,7 @@ document.getElementById(boardID).appendChild(div);
   let socialName = pinBoardElem.getAttribute('data-social')
               let modalElement = `<div id="pfeed-popUp" >
       <div id="pfeed-modal"  >
-        <button onClick="document.getElementById('pfeed-popUp').style.display = 'none'" class="pfeed-modal_close">x</button>
+        <button id="pfeed-modal-close" class="pfeed-modal_close">x</button>
         <div id="pfeed-ImgCont">
           <img id="pfeed-modalimg" src="https://i.pinimg.com/564x/42/a7/e0/42a7e0d60941a9ed3a6dc717ec9fa8d5.jpg">
         </div>
@@ -82,7 +82,9 @@ function CloseModal(e) {
   }
 }
 var BackDrop = document.getElementById("pfeed-popUp")
+var closeElement = document.getElementById("pfeed-modal-close")
 BackDrop.addEventListener("click", CloseModal, false)
+closeElement.addEventListener("click", CloseModal, false)
 function checkVisible(elm) {
 var rect = elm.getBoundingClientRect();
 var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
