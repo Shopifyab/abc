@@ -74,7 +74,14 @@ document.getElementById(boardID).appendChild(div);
           </div>
         </div>`
               let insertel = document.body.insertAdjacentHTML("afterbegin", modalElement)
-
+function CloseModal(e) {
+  console.log(e)
+  if (e.target.id == "pfeed-popUp") {
+     document.getElementById('pfeed-popUp').style.display = 'none';
+  }
+}
+var BackDrop = document.getElementById("pfeed-popUp")
+BackDrop.addEventListener("click", CloseModal, false)
 function checkVisible(elm) {
 var rect = elm.getBoundingClientRect();
 var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
