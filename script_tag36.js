@@ -57,8 +57,8 @@ document.getElementById(boardID).appendChild(div);
 
             let pinBoardElem = document.getElementById('pinboard-wrapper');
   let socialName = pinBoardElem.getAttribute('data-social')
-              let modalElement = `<div id="pfeed-popUp" onClick="document.getElementById('pfeed-popUp').style.display = 'none'" >
-      <div id="pfeed-modal" onClick="function(e) {e.stopPropagation()}" >
+              let modalElement = `<div id="pfeed-popUp" >
+      <div id="pfeed-modal"  >
         <button onClick="document.getElementById('pfeed-popUp').style.display = 'none'" class="pfeed-modal_close">x</button>
         <div id="pfeed-ImgCont">
           <img id="pfeed-modalimg" src="https://i.pinimg.com/564x/42/a7/e0/42a7e0d60941a9ed3a6dc717ec9fa8d5.jpg">
