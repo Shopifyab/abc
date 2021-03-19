@@ -80,14 +80,14 @@ function CloseModal(e) {
      document.body.style.overflowY = "unset"
   }
 }
-var BackDrop = document.getElementById("pfeed-popUp")
-function ModalCloseButton(e) {
+          function ModalCloseButton(e) {
      document.getElementById('pfeed-popUp').style.display = 'none';
      document.body.style.overflowY = "unset"
 }
+var BackDrop = document.getElementById("pfeed-popUp")
 var closeElement = document.getElementById("pfeed-modal-close")
-BackDrop.addEventListener("click", ModalCloseButton, false)
-closeElement.addEventListener("click", CloseModal, false)
+BackDrop.addEventListener("click", CloseModal, false)
+closeElement.addEventListener("click", ModalCloseButton, false)
 function checkVisible(elm) {
 var rect = elm.getBoundingClientRect();
 var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
