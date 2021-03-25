@@ -126,6 +126,10 @@
     let currPinID = document.getElementById('pfeed-popUp').getAttribute("data-pinID")
     
     let getProducts = ({products, pinID, boardID}) => {
+        var loadElem = document.createElement('div');
+        loadElem.className = 'loader';
+        document.getElementById('pfeed-products').innerHTML = '';
+        document.getElementById('pfeed-products').appendChild(loadElem);
         var prodsUrl = 'https://' + window.location.hostname + '/apps/pin_app/boardproducts'
       var prods = new XMLHttpRequest;
       var params = `products=${products}&shop=${shopName}&postID=${pinID}&boardID=${boardID}`;
@@ -173,6 +177,7 @@
   document.getElementById('pfeed-modalimg').src = prevImage;
          document.getElementById('pfeed-modal-description').innerHTML = prevDesc;
          document.getElementById('pfeed-popUp').setAttribute("data-index", prevIndex)
+         document.getElementById('pfeed-products').innerHTML = '';
   
       }, true)
             
@@ -189,10 +194,7 @@
             document.getElementById('pfeed-popUp').style.display = 'flex'; 
       document.getElementById('pfeed-modalimg').src = pinLrgImage;
       document.getElementById('pfeed-modal-description').innerHTML = pinDesc || "";
-      var loadElem = document.createElement('div');
-      loadElem.className = 'loader';
-      document.getElementById('pfeed-products').innerHTML = '';
-      document.getElementById('pfeed-products').appendChild(loadElem);
+
   getProducts({products, pinID, boardID})
             })
             }
