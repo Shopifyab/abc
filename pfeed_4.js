@@ -121,23 +121,12 @@ if(checkVisible(pinBoardElem)){
 document.addEventListener('scroll', isPinSeen);
 // adding onclick event to each pin
           let pinElements = document.getElementsByClassName("masonry-item")
-          
-          for(let i = 0; i < pinElements.length; i++){
-          pinElements[i].addEventListener("click", function() {
-          document.body.style.overflowY = "hidden"
-          let pinLrgImage = pinElements[i].getAttribute('data-image')
-          let pinDesc = pinElements[i].getAttribute('data-desc')
-          let pinProducts = pinElements[i].getAttribute('data-products')
-          let pinBoardID = pinElements[i].getAttribute('data-boardid')
-          let pinID = pinElements[i].id
-          document.getElementById('pfeed-popUp').style.display = 'flex'; 
-    document.getElementById('pfeed-modalimg').src = pinLrgImage;
-    document.getElementById('pfeed-modal-description').innerHTML = pinDesc || "";
-    var loadElem = document.createElement('div');
-    loadElem.className = 'loader';
-    document.getElementById('pfeed-products').innerHTML = '';
-    document.getElementById('pfeed-products').appendChild(loadElem);
-    var prodsUrl = 'https://' + window.location.hostname + '/apps/pin_app/boardproducts'
+            let leftArrowElem = document.getElementById("pfeed-left-arrow-cont")
+  let rightArrowElem = document.getElementById("pfeed-right-arrow-cont")
+  let currPinID = document.getElementById('pfeed-popUp').getAttribute("data-pinID")
+  
+  let getProducts = () => {
+      var prodsUrl = 'https://' + window.location.hostname + '/apps/pin_app/boardproducts'
     var prods = new XMLHttpRequest;
     var params = `products=${pinProducts}&shop=${shopName}&postID=${pinID}&boardID=${pinBoardID}`;
     prods.open('POST', prodsUrl, true)
@@ -166,7 +155,44 @@ var params = `attributes[pinterest-feed ${productID}]=${pinID},${pinBoardID}`;
           })
           }
       }
-    };  
+  }
+          
+               leftArrowElem.addEventListener("click", function leftClick() {
+let currPinID = document.getElementById('pfeed-popUp').getAttribute("data-pinID")
+let currPinIndex = document.getElementById('pfeed-popUp').getAttribute("data-index")
+let prevIndex = currPinIndex - 1 
+if(prevIndex < 0) prevIndex = pinElements.length - 1
+let prevImage = pinElements[prevIndex].getAttribute("data-image")
+let prevDesc = pinElements[prevIndex].getAttribute("data-desc")
+let boardID = pinElements[prevIndex].getAttribute('data-boardid')
+let products = pinElements[prevIndex].getAttribute('data-products')
+let pinID = pinElements[prevIndex].getAttribute('data-pinID')
+
+getProducts()
+document.getElementById('pfeed-modalimg').src = prevImage;
+       document.getElementById('pfeed-modal-description').innerHTML = prevDesc;
+       document.getElementById('pfeed-popUp').setAttribute("data-index", prevIndex)
+
+    }, true)
+          
+          
+          
+          for(let i = 0; i < pinElements.length; i++){
+          pinElements[i].addEventListener("click", function() {
+          document.body.style.overflowY = "hidden"
+          let pinLrgImage = pinElements[i].getAttribute('data-image')
+          let pinDesc = pinElements[i].getAttribute('data-desc')
+          let pinProducts = pinElements[i].getAttribute('data-products')
+          let pinBoardID = pinElements[i].getAttribute('data-boardid')
+          let pinID = pinElements[i].id
+          document.getElementById('pfeed-popUp').style.display = 'flex'; 
+    document.getElementById('pfeed-modalimg').src = pinLrgImage;
+    document.getElementById('pfeed-modal-description').innerHTML = pinDesc || "";
+    var loadElem = document.createElement('div');
+    loadElem.className = 'loader';
+    document.getElementById('pfeed-products').innerHTML = '';
+    document.getElementById('pfeed-products').appendChild(loadElem);
+getProducts()
           })
           }
 
