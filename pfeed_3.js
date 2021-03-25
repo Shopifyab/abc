@@ -79,8 +79,9 @@ document.getElementById(boardID).appendChild(div);
           </div>
         </div>
           <div id="pfeed-product-list">
+<div id="pfeed-modal-description" >the description</div>
             </div>
-            <div id="pfeed-modal-description" >the description</div>
+            
             </div>
           </div>
         </div>`
@@ -132,8 +133,8 @@ document.addEventListener('scroll', isPinSeen);
     document.getElementById('pfeed-modal-description').innerHTML = pinDesc || "";
     var loadElem = document.createElement('div');
     loadElem.className = 'loader';
-    document.getElementById('pfeed-Product_list').innerHTML = '';
-    document.getElementById('pfeed-Product_list').appendChild(loadElem);
+    document.getElementById('pfeed-product-list').innerHTML = '';
+    document.getElementById('pfeed-product-list').appendChild(loadElem);
     var prodsUrl = 'https://' + window.location.hostname + '/apps/pin_app/boardproducts'
     var prods = new XMLHttpRequest;
     var params = `products=${pinProducts}&shop=${shopName}&postID=${pinID}&boardID=${pinBoardID}`;
@@ -142,7 +143,7 @@ document.addEventListener('scroll', isPinSeen);
     prods.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
           var res = prods.response
-          document.getElementById('pfeed-Product_list').innerHTML = res
+          document.getElementById('pfeed-product-list').innerHTML = res
  
           let productElements = document.getElementsByClassName('pfeed-product-card')
           for(let j = 0; j < productElements.length;j++){
