@@ -56,6 +56,7 @@
   
               let pinBoardElem = document.getElementById('pinboard-wrapper');
     let socialName = pinBoardElem.getAttribute('data-social')
+    let socialHandle = pinBoardElem.getAttribute('data-socialhandle')
                 let modalElement = `<div id="pfeed-popUp" >
         <div id="pfeed-modal"  >
           <div id="pfeed-ImgCont">
@@ -66,7 +67,7 @@
             <div class="pfeed-product-header">
   <a>
               <p id="pfeed-social-title">${socialName}</p>
-              <p id="pfeed-social-handle">${socialName}</p>
+              <p id="pfeed-social-handle">${socialHandle}</p>
             </a>
             </div>
   <hr id="pfeed-hline" />
