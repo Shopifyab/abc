@@ -185,7 +185,6 @@ let currPinID = document.getElementById('pfeed-popUp').getAttribute("data-pinID"
         let currPinID = document.getElementById('pfeed-popUp').getAttribute("data-pinID")
         let currPinIndex = document.getElementById('pfeed-popUp').getAttribute("data-index")
         let nextIndex = Number(currPinIndex) + 1
-        console.log("the next", nextIndex)
         if(nextIndex > (pinElements.length - 1)) nextIndex = 0
         let nextImage = pinElements[nextIndex].getAttribute("data-image")
         let nextDesc = pinElements[nextIndex].getAttribute("data-desc")
@@ -197,8 +196,7 @@ let currPinID = document.getElementById('pfeed-popUp').getAttribute("data-pinID"
                document.getElementById('pfeed-modal-description').innerHTML = nextDesc;
                document.getElementById('pfeed-popUp').setAttribute("data-index", nextIndex)
             }, true)
-            
-            
+
             for(let i = 0; i < pinElements.length; i++){
             pinElements[i].addEventListener("click", function() {
             document.body.style.overflowY = "hidden"
