@@ -121,9 +121,7 @@
   document.addEventListener('scroll', isPinSeen);
   // adding onclick event to each pin
             let pinElements = document.getElementsByClassName("masonry-item")
-              let leftArrowElem = document.getElementById("pfeed-left-arrow-cont")
-    let rightArrowElem = document.getElementById("pfeed-right-arrow-cont")
-    let currPinID = document.getElementById('pfeed-popUp').getAttribute("data-pinID")
+  
     
     let getProducts = ({products, pinID, boardID}) => {
         var loadElem = document.createElement('div');
@@ -161,7 +159,10 @@
         }
     }
 }
-            
+let leftArrowElem = document.getElementById("pfeed-left-arrow-cont")
+let rightArrowElem = document.getElementById("pfeed-right-arrow-cont")
+let currPinID = document.getElementById('pfeed-popUp').getAttribute("data-pinID")
+
                  leftArrowElem.addEventListener("click", function leftClick() {
   let currPinID = document.getElementById('pfeed-popUp').getAttribute("data-pinID")
   let currPinIndex = document.getElementById('pfeed-popUp').getAttribute("data-index")
@@ -177,10 +178,25 @@
   document.getElementById('pfeed-modalimg').src = prevImage;
          document.getElementById('pfeed-modal-description').innerHTML = prevDesc;
          document.getElementById('pfeed-popUp').setAttribute("data-index", prevIndex)
-         document.getElementById('pfeed-products').innerHTML = '';
   
       }, true)
             
+      rightArrowElem.addEventListener("click", function rightClick() {
+        let currPinID = document.getElementById('pfeed-popUp').getAttribute("data-pinID")
+        let currPinIndex = document.getElementById('pfeed-popUp').getAttribute("data-index")
+        let nextIndex = Number(currPinIndex) + 1
+        console.log("the next", nextIndex)
+        if(nextIndex > (pinElements.length - 1)) nextIndex = 0
+        let nextImage = pinElements[nextIndex].getAttribute("data-image")
+        let nextDesc = pinElements[nextIndex].getAttribute("data-desc")
+        let products = pinElements[nextIndex].getAttribute('data-products')
+        let pinID = pinElements[nextIndex].getAttribute('data-pinID')
+        let boardID = pinElements[nextIndex].getAttribute('data-boardid')
+        getProducts({products, pinID, boardID})
+        document.getElementById('pfeed-modalimg').src = nextImage;
+               document.getElementById('pfeed-modal-description').innerHTML = nextDesc;
+               document.getElementById('pfeed-popUp').setAttribute("data-index", nextIndex)
+            }, true)
             
             
             for(let i = 0; i < pinElements.length; i++){
