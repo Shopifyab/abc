@@ -174,8 +174,9 @@ let currPinID = document.getElementById('pfeed-popUp').getAttribute("data-pinID"
   let boardID = pinElements[prevIndex].getAttribute('data-boardid')
   let products = pinElements[prevIndex].getAttribute('data-products')
   let pinID = pinElements[prevIndex].getAttribute('data-pinID')
-  
+  if(products != null && products != "" && products != undefined){
   getProducts({products, pinID, boardID})
+  }
   document.getElementById('pfeed-modalimg').src = prevImage;
          document.getElementById('pfeed-modal-description').innerHTML = prevDesc;
          document.getElementById('pfeed-popUp').setAttribute("data-index", prevIndex)
@@ -192,7 +193,9 @@ let currPinID = document.getElementById('pfeed-popUp').getAttribute("data-pinID"
         let products = pinElements[nextIndex].getAttribute('data-products')
         let pinID = pinElements[nextIndex].getAttribute('data-pinID')
         let boardID = pinElements[nextIndex].getAttribute('data-boardid')
+        if(products != null && products != "" && products != undefined){
         getProducts({products, pinID, boardID})
+        }
         document.getElementById('pfeed-modalimg').src = nextImage;
                document.getElementById('pfeed-modal-description').innerHTML = nextDesc;
                document.getElementById('pfeed-popUp').setAttribute("data-index", nextIndex)
