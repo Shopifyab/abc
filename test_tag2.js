@@ -209,8 +209,9 @@ let currPinID = document.getElementById('pfeed-popUp').getAttribute("data-pinID"
             document.getElementById('pfeed-popUp').style.display = 'flex'; 
       document.getElementById('pfeed-modalimg').src = pinLrgImage;
       document.getElementById('pfeed-modal-description').innerHTML = pinDesc || "";
-
+    if(products != null && products != "" && products != undefined){
   getProducts({products, pinID, boardID})
+    }
             })
             }
   
