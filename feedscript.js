@@ -2,7 +2,9 @@
 
     // make api call to get board from dynamodb
   
-   if(window.location.href.indexOf('pfeedid=') ? 0){
+   if(window.location.href.indexOf('pfeedid=') > 0){
       console.log("has the pfeedid")
+      } else {
+      console.log("no pid")
       }
         })
