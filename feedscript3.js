@@ -19,4 +19,4 @@
     getStatus()
               console.log("5")
 
-        })
+        })()
