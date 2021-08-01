@@ -1,12 +1,9 @@
 (function () {
 
     // make api call to get board from dynamodb
-  console.log("1")
-  function getStatus(callback){
-      console.log("2", window)
+  function getStatus(){
 
    if(window.location.href.indexOf('pinfeedid=') > 0){
-      console.log("has the pfeedid")
      function getParameterByName(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
@@ -21,15 +18,10 @@
       var params = `pfid=${pinFeedID}`;
       prods.open('POST', prodsUrl, true)
       prods.send(params)
-      } else {
-      console.log("no pid")
-      }
-          console.log("3")
+      } 
 
   }
-            console.log("4")
 
     getStatus()
-              console.log("5")
 
         })()
