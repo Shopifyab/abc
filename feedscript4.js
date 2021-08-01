@@ -5,7 +5,7 @@
   function getStatus(callback){
       console.log("2", window)
 
-   if(window.location.href.indexOf('pfeedid=') > 0){
+   if(window.location.href.indexOf('pinfeedid=') > 0){
       console.log("has the pfeedid")
      function getParameterByName(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
